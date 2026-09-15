@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Organización de Iglesia Cristiana Josué 1.9, INC. | Español · English</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Arial,Helvetica,sans-serif;background:#f4f6f8}
+.langbar{height:64px;display:flex;align-items:center;justify-content:center;gap:12px;padding:10px;background:#102f55;position:sticky;top:0;z-index:9999;box-shadow:0 2px 10px rgba(0,0,0,.22)}
+.langbar strong{color:#fff;margin-right:12px;font-size:.95rem}
+.langbar button{cursor:pointer;border:2px solid #d9b65d;border-radius:999px;padding:9px 18px;font-weight:800;color:white;background:transparent;letter-spacing:.03em}
+.langbar button.active{background:#d9b65d;color:#102f55}
+.pages{height:calc(100vh - 64px)}
+iframe{width:100%;height:100%;border:0;background:#fff}
+@media(max-width:640px){
+  .langbar{height:58px;gap:7px;padding:7px}
+  .langbar strong{display:none}
+  .langbar button{padding:8px 13px;font-size:.9rem}
+  .pages{height:calc(100vh - 58px)}
+}
+</style>
+</head>
+<body>
+<div class="langbar">
+  <strong>Idioma / Language</strong>
+  <button id="es" class="active" onclick="setLang('es')">ESPAÑOL</button>
+  <button id="en" onclick="setLang('en')">ENGLISH</button>
+</div>
+
+<div class="pages">
+  <iframe id="page" src="es.html" title="Sitio oficial OICJ 1.9"></iframe>
+</div>
+
+<script>
+function setLang(lang){
+  document.getElementById('page').src=lang+'.html';
+  document.getElementById('es').classList.toggle('active',lang==='es');
+  document.getElementById('en').classList.toggle('active',lang==='en');
+}
+
+function compactFeatureRows(){
+  const frame=document.getElementById('page');
+  try{
+    const doc=frame.contentDocument||frame.contentWindow.document;
+    const labels=new Set([
+      'Aplicaciones Ministeriales',
+      'Exámenes y Preguntas',
+      'Matrícula y Admisión',
+      'Ministerial Applications',
+      'Exams and Questions',
+      'Enrollment and Admission',
+      'Applications for Ministry',
+      'Examinations and Questions',
+      'Registration and Admission'
+    ]);
+    const clean=s=>(s||'').replace(/\s+/g,' ').trim();
+
+    [...doc.querySelectorAll('a,button,span,div')].forEach(el=>{
+      const txt=clean(el.textContent);
+      if(!labels.has(txt)) return;
+
+      el.style.display='inline-flex';
+      el.style.alignItems='center';
+      el.style.justifyContent='center';
+      el.style.width='220px';
+      el.style.maxWidth='100%';
+      el.style.padding='7px 12px';
+      el.style.margin='0';
+      el.style.fontSize='14px';
+      el.style.lineHeight='1.2';
+      el.style.whiteSpace='normal';
+
+      let row=el.parentElement;
+      for(let i=0;i<4 && row;i++){
+        const rt=clean(row.textContent);
+        if(rt.length>txt.length && rt.length<320) break;
+        row=row.parentElement;
+      }
+
+      if(row){
+        row.style.display='flex';
+        row.style.alignItems='center';
+        row.style.justifyContent='flex-start';
+        row.style.gap='10px';
+        row.style.width='100%';
+        row.style.maxWidth='920px';
+        row.style.margin='0 auto';
+        row.style.padding='4px 12px';
+        row.style.boxSizing='border-box';
+        row.style.flexWrap='wrap';
+      }
+    });
+  }catch(e){}
+}
+
+document.getElementById('page').addEventListener('load',()=>setTimeout(compactFeatureRows,100));
+</script>
+</body>
+</html>
