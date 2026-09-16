@@ -1,37 +1,82 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Organización de Iglesia Cristiana Josué 1.9, INC.</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Organización de Iglesia Cristiana Josué 1.9, INC. | Español · English</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Arial,Helvetica,sans-serif;background:#f4f6f8}
-.langbar{height:58px;display:flex;align-items:center;justify-content:center;gap:10px;padding:8px;background:#0d315c;position:sticky;top:0;z-index:9999;border-bottom:3px solid #d9b65d}
-.langbar strong{color:#fff;margin-right:10px}.langbar button{cursor:pointer;border:2px solid #d9b65d;border-radius:999px;padding:8px 18px;font-weight:800;color:#fff;background:transparent}.langbar button.active{background:#d9b65d;color:#102f55}
-.pages{height:calc(100vh - 58px)}iframe{width:100%;height:100%;border:0;background:#fff}
-@media(max-width:640px){.langbar{height:54px}.langbar strong{display:none}.langbar button{padding:7px 12px;font-size:.86rem}.pages{height:calc(100vh - 54px)}}
-</style></head>
-<body>
-<div class="langbar"><strong>Idioma / Language</strong><button id="es" class="active" onclick="setLang('es')">ESPAÑOL</button><button id="en" onclick="setLang('en')">ENGLISH</button></div>
-<div class="pages"><iframe id="page" src="es.html" title="Sitio oficial OICJ 1.9"></iframe></div>
-<script>
-function setLang(lang){document.getElementById('page').src=lang+'.html';document.getElementById('es').classList.toggle('active',lang==='es');document.getElementById('en').classList.toggle('active',lang==='en')}
-function design(){
- const f=document.getElementById('page');
- try{
-  const d=f.contentDocument||f.contentWindow.document;
-  const s=d.createElement('style');s.id='oicj-approved-style';
-  s.textContent=`:root{--navy:#0d315c;--gold:#d9b65d}body{background:#fff!important}nav a{white-space:nowrap!important}
-  @media(min-width:760px){nav ul,nav>div{flex-wrap:nowrap!important}nav a{font-size:13px!important;padding-left:7px!important;padding-right:7px!important}}
-  .oicj-feature-row{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;width:min(100%,920px)!important;margin:8px auto!important;padding:0 12px!important}
-  .oicj-feature-row>*{min-width:0!important;width:100%!important;margin:0!important}.oicj-feature-row a,.oicj-feature-row button{width:100%!important;min-height:42px!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;white-space:normal!important;font-size:13px!important;line-height:1.15!important;padding:7px 6px!important}
-  @media(max-width:430px){.oicj-feature-row{gap:5px!important;padding:0 5px!important}.oicj-feature-row a,.oicj-feature-row button{font-size:10px!important;padding:6px 3px!important}}`;
-  d.head.appendChild(s);
-  const sets=[['Aplicaciones Ministeriales','Exámenes y Preguntas','Matrícula y Admisión'],['Ministerial Applications','Exams and Questions','Enrollment and Admission'],['Applications for Ministry','Examinations and Questions','Registration and Admission']];
-  const clean=x=>(x||'').replace(/\s+/g,' ').trim();
-  let a=[];
-  for(const set of sets){a=set.map(t=>[...d.querySelectorAll('a,button')].find(e=>clean(e.textContent)===t)).filter(Boolean);if(a.length===3)break}
-  if(a.length===3){let p=a[0].parentElement;while(p&&!a.every(e=>p.contains(e)))p=p.parentElement;if(p)p.classList.add('oicj-feature-row')}
- }catch(e){}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font-family:Arial,Helvetica,sans-serif;background:#f4f6f8}
+.langbar{height:64px;display:flex;align-items:center;justify-content:center;gap:12px;padding:10px;background:#102f55;position:sticky;top:0;z-index:9999;box-shadow:0 2px 10px rgba(0,0,0,.22)}
+.langbar strong{color:#fff;margin-right:12px;font-size:.95rem}
+.langbar button{cursor:pointer;border:2px solid #d9b65d;border-radius:999px;padding:9px 18px;font-weight:800;color:white;background:transparent;letter-spacing:.03em}
+.langbar button.active{background:#d9b65d;color:#102f55}
+.pages{height:calc(100vh - 64px)}
+iframe{width:100%;height:100%;border:0;background:#fff}
+@media(max-width:640px){
+  .langbar{height:58px;gap:7px;padding:7px}
+  .langbar strong{display:none}
+  .langbar button{padding:8px 13px;font-size:.9rem}
+  .pages{height:calc(100vh - 58px)}
 }
-document.getElementById('page').addEventListener('load',()=>setTimeout(design,150));
-</script></body></html>
+</style>
+</head>
+<body>
+<div class="langbar">
+  <strong>Idioma / Language</strong>
+  <button id="es" class="active" onclick="setLang('es')">ESPAÑOL</button>
+  <button id="en" onclick="setLang('en')">ENGLISH</button>
+</div>
+
+<div class="pages">
+  <iframe id="page" src="es.html" title="Sitio oficial OICJ 1.9"></iframe>
+</div>
+
+<script>
+function setLang(lang){
+  document.getElementById('page').src=lang+'.html';
+  document.getElementById('es').classList.toggle('active',lang==='es');
+  document.getElementById('en').classList.toggle('active',lang==='en');
+}
+
+function removeThreeSections(){
+  const frame=document.getElementById('page');
+  try{
+    const doc=frame.contentDocument||frame.contentWindow.document;
+    const labels=[
+      'Aplicaciones Ministeriales',
+      'Exámenes y Preguntas',
+      'Matrícula y Admisión',
+      'Ministerial Applications',
+      'Exams and Questions',
+      'Enrollment and Admission',
+      'Applications for Ministry',
+      'Examinations and Questions',
+      'Registration and Admission'
+    ];
+    const clean=s=>(s||'').replace(/\s+/g,' ').trim();
+
+    for(const el of [...doc.querySelectorAll('a,button,span,div,h1,h2,h3,h4')]){
+      const txt=clean(el.textContent);
+      if(!labels.includes(txt)) continue;
+
+      let box=el;
+      // Walk up only through compact wrappers, so the rest of the page stays untouched.
+      for(let i=0;i<4 && box.parentElement;i++){
+        const p=box.parentElement;
+        const pt=clean(p.textContent);
+        if(pt.length>=txt.length && pt.length<500){
+          box=p;
+        }else{
+          break;
+        }
+      }
+      box.style.display='none';
+    }
+  }catch(e){}
+}
+
+document.getElementById('page').addEventListener('load',()=>setTimeout(removeThreeSections,200));
+</script>
+</body>
+</html>
