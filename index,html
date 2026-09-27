@@ -1,7 +1,7 @@
 <script>
 function setLang(lang){
   document.getElementById('page').src = lang + '.html';
-
+<meta chart set="utf-8>
   document.getElementById('es')
     .classList.toggle('active', lang === 'es');
 <style> CSS (margin:0;)
@@ -9,7 +9,7 @@ function setLang(lang){
     .classList.toggle('active', lang === 'en');
 }
 </script>
-
+.langbar{
 </body>
 </html><!DOCTYPE html>
 <html lang="es">
