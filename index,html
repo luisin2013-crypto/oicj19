@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<script>
+function setLang(lang){
+  document.getElementById('page').src = lang + '.html';
+
+  document.getElementById('es')
+    .classList.toggle('active', lang === 'es');
+
+  document.getElementById('en')
+    .classList.toggle('active', lang === 'en');
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
