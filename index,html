@@ -4,3 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport"content-"width=device-width,initial-scale-1">
 <title>Organizacion de Iglesia Cristiana Josue 1.9,INC.Espanol / English</title>
+margin:0;
+height:100%;
+font-family:Arial,Helvetica,sans-serif;
+background:#f4f6f8
+}
+.langbar{
+height:64px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:10px;
+background:#102f55;
+position:sticky;
+top:0;
+z-index:9999;
+box-shadow:0 2px 10px rgba(0,0,0,.22
